@@ -7,7 +7,7 @@ file_length:
 
 disabled_rules:
   - trailing_whitespace
-
+  - comment_spacing
 excluded:
   - .git
   - Pods
