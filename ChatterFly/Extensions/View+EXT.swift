@@ -17,4 +17,9 @@ extension View {
             .background(.red)
             .clipShape(RoundedRectangle(cornerRadius: 15))
     }
+    
+    func clearTapBackGround() -> some View {
+        self
+            .background(Color.black.opacity(0.001))
+    }
 }
