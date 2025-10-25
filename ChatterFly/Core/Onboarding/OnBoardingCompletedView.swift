@@ -10,7 +10,6 @@ import SwiftUI
 struct OnBoardingCompletedView: View {
     @Environment(AppState.self) private var appstate
     var body: some View {
-        NavigationStack {
             VStack {
                 Text("Onboarding Completed")
                     .frame(maxHeight: .infinity)
@@ -24,10 +23,11 @@ struct OnBoardingCompletedView: View {
             }
             .padding()
         }
-    }
 }
 
 #Preview {
-    OnBoardingCompletedView()
-        .environment(AppState(showTabBar: true))
+    NavigationStack{
+        OnBoardingCompletedView()
+            .environment(AppState(showTabBar: true))
+    }
 }

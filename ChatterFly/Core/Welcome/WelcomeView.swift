@@ -16,7 +16,7 @@ struct WelcomeView: View {
                     .ignoresSafeArea()
                 
                 title
-                    .padding(.top,24)
+                    .padding(.top, 24)
                 
                 ctaButtons
                     .padding()
@@ -25,7 +25,6 @@ struct WelcomeView: View {
             }
            
         }
-        
     }
     
     private var title: some View {
@@ -43,7 +42,7 @@ struct WelcomeView: View {
     private var ctaButtons: some View {
         VStack {
             NavigationLink {
-                OnBoardingCompletedView()
+                OnBoardingIntroView()
             }label: {
                 Text("Get Started")
                     .callToAction()
@@ -60,7 +59,7 @@ struct WelcomeView: View {
         }
     }
     
-    private var policyLinks:some View {
+    private var policyLinks: some View {
         HStack {
             Link(
                 destination: URL(
@@ -86,5 +85,7 @@ struct WelcomeView: View {
 }
 
 #Preview {
-    WelcomeView()
+    NavigationStack{
+        WelcomeView()
+    }
 }

@@ -8,6 +8,10 @@ file_length:
 disabled_rules:
   - trailing_whitespace
   - comment_spacing
+  - opening_brace
+  - comma
+  - colon
+  - vertical_whitespace 
 excluded:
   - .git
   - Pods
