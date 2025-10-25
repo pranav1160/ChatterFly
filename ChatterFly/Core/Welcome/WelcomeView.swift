@@ -87,5 +87,6 @@ struct WelcomeView: View {
 #Preview {
     NavigationStack{
         WelcomeView()
+            .environment(AppState())
     }
 }

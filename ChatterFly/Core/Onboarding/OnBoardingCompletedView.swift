@@ -8,26 +8,59 @@
 import SwiftUI
 
 struct OnBoardingCompletedView: View {
+    let profileColor:Color
     @Environment(AppState.self) private var appstate
+    @State private var isProfileSetupFinishing:Bool = false
     var body: some View {
-            VStack {
-                Text("Onboarding Completed")
-                    .frame(maxHeight: .infinity)
-                
-                Button {
-                    appstate.updateViewState(showTabBarView: true)
-                }label: {
+        VStack(alignment:.leading) {
+            Text("Setup complete!")
+                .font(.largeTitle)
+                .fontWeight(.semibold)
+                .foregroundStyle(profileColor)
+            
+            Text("We've set you profile and you're ready to start chatting.")
+                .font(.title)
+                .fontWeight(.semibold)
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxHeight:.infinity)
+        .padding(24)
+        .safeAreaInset(edge: .bottom) {
+            ctaButton
+        }
+        .toolbarVisibility(.hidden, for: .navigationBar)
+
+    }
+    
+    private var ctaButton: some View {
+        Button {
+            isProfileSetupFinishing = true
+            Task{
+                try await Task.sleep(for: .seconds(3))
+                isProfileSetupFinishing = false
+                appstate.updateViewState(showTabBarView: true)
+            }
+            
+        }label: {
+            ZStack{
+                if isProfileSetupFinishing{
+                    ProgressView()
+                        .tint(.white)
+                } else{
                     Text("Finish")
-                        .callToAction()
                 }
             }
-            .padding()
+            .callToAction()
         }
+        .disabled(isProfileSetupFinishing == true)
+        .padding(24)
+        .background(.ultraThinMaterial)
+    }
 }
 
 #Preview {
-    NavigationStack{
-        OnBoardingCompletedView()
-            .environment(AppState(showTabBar: true))
+    NavigationStack {
+        OnBoardingCompletedView(profileColor: .pink)
     }
+    .environment(AppState(showTabBar: true))
 }

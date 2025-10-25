@@ -29,6 +29,7 @@ struct OnBoardingIntroView: View {
         }
         .padding(24)
         .font(.title2)
+        .toolbarVisibility(.hidden, for: .navigationBar)
     }
 }
 
@@ -36,4 +37,5 @@ struct OnBoardingIntroView: View {
     NavigationStack{
         OnBoardingIntroView()
     }
+    .environment(AppState())
 }
