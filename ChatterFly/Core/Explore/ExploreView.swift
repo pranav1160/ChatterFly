@@ -11,12 +11,18 @@ struct ExploreView: View {
     let avatar = Avatar.mock
     var body: some View {
         NavigationStack {
-            HeroCellView(
-                title: avatar.name,
-                subTitle: avatar.characterDescription,
-                imageName: avatar.profileImageName
+            CarouselView(
+                items: Avatar.mocks,
+                content: { item in
+                    HeroCellView(
+                        title: item.name,
+                        subTitle: item.characterDescription,
+                        imageName: item.profileImageName
+                    )
+                }
             )
-            .frame(width: 350,height: 250)
+            .padding()
+                .padding()
             
             .navigationTitle("Explore")
         }
