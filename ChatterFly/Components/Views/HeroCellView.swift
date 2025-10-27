@@ -36,18 +36,9 @@ struct HeroCellView: View {
                 }
                 .frame(maxWidth: .infinity,alignment: .leading)
                 .foregroundStyle(.white)
-                .padding(5)
+                .padding(8)
                 .background {
-                    LinearGradient(
-                        colors: [
-                            Color.black.opacity(0.1),
-                            Color.black.opacity(0.3),
-                            Color.black.opacity(0.4)
-                        ],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                    
+                    textBackGroundGradient()
             }
         })
         .clipShape(RoundedRectangle(cornerRadius: 15))

@@ -17,14 +17,8 @@ struct CarouselView<Content:View,T:Hashable> : View {
         VStack(spacing: 10) {
             carousel
             
-            HStack {
-                ForEach(items.indices, id: \.self) { id in
-                    Circle()
-                        .fill(scrollIndex == id ? Color.accentColor : .black.opacity(0.3))
-                        .frame(width: 10, height: 10)
-                }
-            }
-            .animation(.easeInOut, value: scrollIndex)
+            positionIndicators
+            
         }
         .onAppear {
             resetIfAtEnd()
@@ -49,6 +43,17 @@ struct CarouselView<Content:View,T:Hashable> : View {
         .scrollIndicators(.hidden)
         .scrollTargetBehavior(.paging)
         .scrollPosition(id: $scrollIndex, anchor: .center)
+    }
+    
+    private var positionIndicators: some View{
+        HStack {
+            ForEach(items.indices, id: \.self) { id in
+                Circle()
+                    .fill(scrollIndex == id ? Color.accentColor : .black.opacity(0.3))
+                    .frame(width: 10, height: 10)
+            }
+        }
+        .animation(.easeInOut, value: scrollIndex)
     }
     
     private func resetIfAtEnd() {
