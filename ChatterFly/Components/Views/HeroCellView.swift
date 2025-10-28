@@ -42,6 +42,7 @@ struct HeroCellView: View {
             }
         })
         .clipShape(RoundedRectangle(cornerRadius: 15))
+        .contentShape(Rectangle())
     }
 }
 

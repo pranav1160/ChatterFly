@@ -13,7 +13,7 @@ struct ImageLoaderView: View {
     var url: String = Constants.randomImage
     var body: some View {
         Rectangle()
-            .opacity(0)
+            .opacity(0.0001)
             .overlay {
                 WebImage(url: URL(string: url))
                     .resizable()

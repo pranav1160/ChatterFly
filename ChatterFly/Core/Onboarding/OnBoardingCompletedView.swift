@@ -29,11 +29,21 @@ struct OnBoardingCompletedView: View {
             ctaButton
         }
         .toolbarVisibility(.hidden, for: .navigationBar)
-
+        
     }
     
     private var ctaButton: some View {
-        Button {
+        
+        ZStack{
+            if isProfileSetupFinishing{
+                ProgressView()
+                    .tint(.white)
+            } else{
+                Text("Finish")
+            }
+        }
+        .callToAction()
+        .anyButton(style: .pressable) {
             isProfileSetupFinishing = true
             Task{
                 try await Task.sleep(for: .seconds(3))
@@ -41,17 +51,8 @@ struct OnBoardingCompletedView: View {
                 appstate.updateViewState(showTabBarView: true)
             }
             
-        }label: {
-            ZStack{
-                if isProfileSetupFinishing{
-                    ProgressView()
-                        .tint(.white)
-                } else{
-                    Text("Finish")
-                }
-            }
-            .callToAction()
         }
+        
         .disabled(isProfileSetupFinishing == true)
         .padding(24)
         .background(.ultraThinMaterial)

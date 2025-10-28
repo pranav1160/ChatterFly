@@ -14,11 +14,12 @@ struct SettingsView: View {
         NavigationStack {
             Form {
                 Section {
-                    Button {
-                        onSignOutButtonPresses()
-                    }label: {
-                        Text("Sign Out")
-                    }
+                   
+                    Text("Sign Out")
+                        .anyButton {
+                            onSignOutButtonPresses()
+                        }
+                    
                 }
             }
         }
