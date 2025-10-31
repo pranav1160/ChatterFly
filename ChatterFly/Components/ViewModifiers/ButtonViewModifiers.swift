@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-struct HighlightButtonStyle:ButtonStyle{
+struct HighlightButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .overlay(
-                configuration.isPressed ? Color.accentColor.opacity(0.5) : Color
-                    .accent.opacity(0)
-            )
+            .overlay {
+                configuration.isPressed ? Color.accent.opacity(0.4) : Color.accent.opacity(0)
+            }
             .animation(.smooth, value: configuration.isPressed)
     }
 }
+
 
 struct PressableButtonStyle:ButtonStyle{
     func makeBody(configuration: Configuration) -> some View {
