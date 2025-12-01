@@ -16,15 +16,12 @@ struct CarouselView<Content:View,T:Hashable> : View {
     var body: some View {
         VStack(spacing: 10) {
             carousel
-            
             positionIndicators
-            
         }
         .onAppear {
             resetIfAtEnd()
         }
     }
-    
     private var carousel: some View {
         ScrollView(.horizontal) {
             LazyHStack(spacing: 0) {

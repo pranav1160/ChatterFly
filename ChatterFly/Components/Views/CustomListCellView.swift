@@ -31,6 +31,7 @@ struct CustomListCellView: View {
                     Text(title)
                         .font(.headline)
                         .fontWeight(.semibold)
+                        
                 }
                 //subtitle
                 if let subTitle{
@@ -38,9 +39,12 @@ struct CustomListCellView: View {
                         .font(.subheadline)
                 }
             }
+            
             .frame(maxWidth: .infinity,alignment: .leading)
             
         }
+        .frame(maxWidth: .infinity,alignment: .leading)
+        .background(Color(uiColor: .secondarySystemBackground))
         .padding()
     }
 }

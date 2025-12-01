@@ -17,7 +17,7 @@ struct User{
     var profileColorCalculated:Color{
         if let profileColorHex{
             return Color(hex: profileColorHex)
-        }else{
+        } else {
             return Color.accentColor
         }
     }

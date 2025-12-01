@@ -63,7 +63,7 @@ struct ProfileView: View {
                 Group{
                     if isLoading{
                         ProgressView()
-                    }else{
+                    } else {
                         Text("Click + to create Avatars")
                     }
                 }

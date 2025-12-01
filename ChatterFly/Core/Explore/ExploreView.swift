@@ -60,9 +60,7 @@ struct ExploreView: View {
                             cornerRadius: 20
                         )
                         .anyButton(style: .pressable) {
-                            
                         }
-                        
                     }
                 }
             }
@@ -71,7 +69,6 @@ struct ExploreView: View {
             .scrollTargetLayout()
             .scrollTargetBehavior(.viewAligned)
             .removeExtraListFormatting()
-            
         } header: {
             Text("Categories")
         }
