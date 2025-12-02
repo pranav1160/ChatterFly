@@ -11,7 +11,7 @@ import SwiftUI
 struct SettingsView: View {
     
     @State private var isPremium:Bool = true
-    @State private var isAnonymousUser:Bool = true
+    @State private var isAnonymousUser:Bool = false
     @State private var showCreateAccountScreen:Bool = false
     
     @Environment(\.dismiss) private var dismiss

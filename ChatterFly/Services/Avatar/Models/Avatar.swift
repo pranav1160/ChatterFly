@@ -113,26 +113,3 @@ struct AvatarDescriptionBuilder{
         "A \(characterOption) that is \(characterAction) in the \(characterLocation)"
     }
 }
-
-enum CharacterOption:String,CaseIterable,Hashable{
-    case man,woman,alien,dog,cat
-    
-    static var defaultCharacter:Self{
-        .cat
-    }
-}
-
-enum CharacterAction:String{
-    case smiling,sitting,eating,drinking,walking,shopping,studying,working,relaxing,fighting,crying
-    
-    static var defaultAction:Self{
-        .sitting
-    }
-}
-
-enum CharacterLocation:String{
-    case park,mall,museum,city,desert,forest,space
-    static var defaultLocation:Self{
-        .park
-    }
-}

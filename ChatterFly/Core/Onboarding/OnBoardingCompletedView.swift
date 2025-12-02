@@ -29,34 +29,26 @@ struct OnBoardingCompletedView: View {
             ctaButton
         }
         .toolbarVisibility(.hidden, for: .navigationBar)
-        
+    }
+    
+    private func onFinishButtonPressed(){
+        isProfileSetupFinishing = true
+        Task{
+            try await Task.sleep(for: .seconds(3))
+            isProfileSetupFinishing = false
+            appstate.updateViewState(showTabBarView: true)
+        }
     }
     
     private var ctaButton: some View {
-        
-        ZStack{
-            if isProfileSetupFinishing{
-                ProgressView()
-                    .tint(.white)
-            } else{
-                Text("Finish")
-            }
-        }
-        .callToAction()
-        .anyButton(style: .pressable) {
-            isProfileSetupFinishing = true
-            Task{
-                try await Task.sleep(for: .seconds(3))
-                isProfileSetupFinishing = false
-                appstate.updateViewState(showTabBarView: true)
-            }
-            
-        }
-        
-        .disabled(isProfileSetupFinishing == true)
-        .padding(24)
-        .background(.ultraThinMaterial)
+       
+        AsyncCallToActionButton(
+            isLoading: isProfileSetupFinishing,
+            title: "Finish",
+            action: onFinishButtonPressed
+        )
     }
+    
 }
 
 #Preview {

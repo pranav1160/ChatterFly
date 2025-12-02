@@ -14,7 +14,7 @@ struct ChatView: View {
             List(chats) { chat in
                 Text(chat.id)
             }
-                .navigationTitle("Chat")
+            .navigationTitle("Chat")
         }
     }
 }

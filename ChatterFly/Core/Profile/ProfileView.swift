@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct ProfileView: View {
+    
     @State private var showSettingsView = false
     @State private var showAvatarCreateView = false
     @State private var currentUser:User? = .mock
     @State private var avatars:[Avatar] = []
     @State private var isLoading:Bool = true
+    
     var body: some View {
+        
         NavigationStack {
             List{
                 profileSection
@@ -34,7 +37,7 @@ struct ProfileView: View {
             .fullScreenCover(
                 isPresented: $showAvatarCreateView
             ) {
-                Text("Create Avatar")
+                CreateAvatarView()
             }
         }
     }
