@@ -38,7 +38,7 @@ struct User{
 
 extension User {
     static let mock = User(
-        userId: "user_001",
+        userId: "user1",
         dateCreated: Date(timeIntervalSinceNow: -86400 * 10), // 10 days ago
         didCreateOnboarding: true,
         profileColorHex: "#4ECDC4"

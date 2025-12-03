@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ChatMessage {
+struct ChatMessage :Identifiable{
     let id: String
     let chatId: String
     let authorId: String?
@@ -61,7 +61,7 @@ extension ChatMessage {
             ChatMessage(
                 id: "msg_3",
                 chatId: "mock_chat_1",
-                authorId: "user3",
+                authorId: "user1",
                 content: "Yo same here, weekend vibes!",
                 seenByIds: ["user1", "user2"],
                 dateCreated: now.addingTimeInterval(minutes: -2)

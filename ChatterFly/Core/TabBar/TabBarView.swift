@@ -15,7 +15,7 @@ struct TabBarView: View {
                     Label("Explore", systemImage: "eyes")
                 }
             
-            ChatView()
+            ChatListView()
                 .tabItem {
                     Label("Chats", systemImage: "bubble.left.and.bubble.right")
                 }
