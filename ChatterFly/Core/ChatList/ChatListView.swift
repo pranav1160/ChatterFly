@@ -12,7 +12,11 @@ struct ChatListView: View {
     var body: some View {
         NavigationStack {
             List(chats) { chat in
-                Text(chat.id)
+                NavigationLink {
+                    ChatView()
+                } label: {
+                    Text(chat.id)
+                }
             }
             .navigationTitle("Chat")
         }

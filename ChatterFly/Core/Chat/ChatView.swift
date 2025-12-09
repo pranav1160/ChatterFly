@@ -15,6 +15,73 @@ struct ChatView: View {
     @State private var textFieldText:String = ""
     @State private var showChatSettings:Bool = false
     @State private var scrollPosition:String?
+    @State private var showAlert:Bool = false
+    @State private var alertTitle:String = ""
+    
+   
+    private func onSendMessage(){
+        guard let currentUser else {return}
+        
+        let message :ChatMessage = ChatMessage(
+            id: UUID().uuidString,
+            chatId: UUID().uuidString,
+            authorId: currentUser.userId,
+            content: textFieldText,
+            seenByIds: nil,
+            dateCreated: .now
+        )
+        
+        let content = textFieldText
+        do{
+            try TextValidationHelper.checkMessage(text: content)
+            chatMessages.append(message)
+            scrollPosition = message.id
+            textFieldText = ""
+        } catch let error {
+            alertTitle = error.localizedDescription
+            showAlert = true
+        }
+    }
+    
+    private func onChatSettingsPressed(){
+        showChatSettings = true
+    }
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            scrollSection
+                
+            textFieldSection
+            
+        }
+        .navigationTitle(avatar?.name ?? "Chat")
+        .toolbar{
+            ToolbarItem(placement: .topBarTrailing) {
+                Image(systemName: "ellipsis")
+                    .padding(8)
+                    .anyButton {
+                        onChatSettingsPressed()
+                    }
+            }
+        }
+        .confirmationDialog("", isPresented: $showChatSettings) {
+            Button("Report User / Chat",role: .destructive) {
+                
+            }
+            
+            Button("Delete Chat",role: .destructive) {
+                
+            }
+            
+        }message: {
+            Text("What would you like to do?")
+        }
+        .alert(alertTitle, isPresented: $showAlert) {
+            Button("OK", role: .cancel) { }
+        }
+        
+        .toolbarTitleDisplayMode(.inline)
+    }
     
     private var scrollSection:some View{
         ScrollView {
@@ -67,58 +134,6 @@ struct ChatView: View {
             .background(Color(uiColor: .secondarySystemBackground))
     }
     
-    private func onSendMessage(){
-        guard let currentUser else {return}
-        
-        let message :ChatMessage = ChatMessage(
-            id: UUID().uuidString,
-            chatId: UUID().uuidString,
-            authorId: currentUser.userId,
-            content: textFieldText,
-            seenByIds: nil,
-            dateCreated: .now
-        )
-        
-        chatMessages.append(message)
-        scrollPosition = message.id
-        textFieldText = ""
-    }
-    private func onChatSettingsPressed(){
-        showChatSettings = true
-    }
-    
-    var body: some View {
-        VStack(spacing: 0) {
-            scrollSection
-                
-            textFieldSection
-            
-        }
-        .navigationTitle(avatar?.name ?? "Chat")
-        .toolbar{
-            ToolbarItem(placement: .topBarTrailing) {
-                Image(systemName: "ellipsis")
-                    .padding(8)
-                    .anyButton {
-                        onChatSettingsPressed()
-                    }
-            }
-        }
-        .confirmationDialog("", isPresented: $showChatSettings) {
-            Button("Report User / Chat",role: .destructive) {
-                
-            }
-            
-            Button("Delete Chat",role: .destructive) {
-                
-            }
-            
-        }message: {
-            Text("What would you like to do?")
-        }
-        
-        .toolbarTitleDisplayMode(.inline)
-    }
 }
 
 #Preview {
