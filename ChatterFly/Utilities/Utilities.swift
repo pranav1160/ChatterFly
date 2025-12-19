@@ -363,5 +363,3 @@ public struct Utilities {
         return .appStore
     }
 }
-
-

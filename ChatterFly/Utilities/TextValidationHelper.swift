@@ -48,7 +48,7 @@ struct TextValidationHelper{
         
         if text.count<minLength{
             throw TextValidationError.notEnoughCharacters(minLen: minLength)
-        }else if badWords.contains(where: { lower.contains($0) }){
+        } else if badWords.contains(where: { lower.contains($0) }){
             throw TextValidationError.badWords
         }
     }
