@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-
-
-
-
-
 struct ChatView: View {
     
     @State private var chatMessages: [ChatMessage] = ChatMessage.mocks
@@ -21,8 +16,59 @@ struct ChatView: View {
     @State private var showChatSettings:AnyAppAlert?
     @State private var scrollPosition:String?
     @State private var alert:AnyAppAlert?
+    @State private var showProfileModal:Bool = false
+
+    var body: some View {
+        ZStack{
+            VStack(spacing: 0) {
+                scrollSection
+                
+                textFieldSection
+                
+            }
+            if showProfileModal{
+                
+                Color.black.opacity(0.6).ignoresSafeArea()
+                    .onTapGesture {
+                        showProfileModal = false
+                    }
+                if let avatar{
+                    ProfileModalView(
+                        imageName: avatar.profileImageName,
+                        title: avatar.name,
+                        subtitle: avatar.characterOption?.rawValue.capitalized,
+                        headline: avatar.characterDescription,
+                        onXMarkPressed: {
+                            showProfileModal = false
+                        }
+                    )
+                    .padding(40)
+                    .transition(
+                        .asymmetric(
+                            insertion: .scale.animation(.bouncy(duration: 0.4)),
+                            removal: .identity.animation(.bouncy))
+                    )
+                }
+                    
+            }
+            
+        }
+        .navigationTitle(avatar?.name ?? "Chat")
+        .toolbar{
+            ToolbarItem(placement: .topBarTrailing) {
+                Image(systemName: "ellipsis")
+                    .padding(8)
+                    .anyButton {
+                        onChatSettingsPressed()
+                    }
+            }
+        }
+        .showCustomAlert(type: .confirmationDialog, alert: $showChatSettings)
+        .showCustomAlert(alert: $alert)
+        .toolbarTitleDisplayMode(.inline)
+    }
     
-   
+    
     private func onSendMessage(){
         guard let currentUser else {return}
         
@@ -68,29 +114,6 @@ struct ChatView: View {
         )
     }
 
-    
-    var body: some View {
-        VStack(spacing: 0) {
-            scrollSection
-                
-            textFieldSection
-            
-        }
-        .navigationTitle(avatar?.name ?? "Chat")
-        .toolbar{
-            ToolbarItem(placement: .topBarTrailing) {
-                Image(systemName: "ellipsis")
-                    .padding(8)
-                    .anyButton {
-                        onChatSettingsPressed()
-                    }
-            }
-        }
-        .showCustomAlert(type: .confirmationDialog, alert: $showChatSettings)
-        .showCustomAlert(alert: $alert)
-        .toolbarTitleDisplayMode(.inline)
-    }
-    
     private var scrollSection:some View{
         ScrollView {
             LazyVStack(spacing: 24) {
@@ -99,7 +122,10 @@ struct ChatView: View {
                     ChatBubbleViewBuilder(
                         message: message,
                         isCurrentUser: isCurrentUser,
-                        imageName: isCurrentUser ? nil : avatar?.profileImageName
+                        imageName: isCurrentUser ? nil : avatar?.profileImageName,
+                        onAvatarPressed: {
+                            showProfileModal = true
+                        }
                     )
                     .id(message.id)
                 }
