@@ -7,16 +7,20 @@
 
 import SwiftUI
 
+
+
+
+
+
 struct ChatView: View {
     
     @State private var chatMessages: [ChatMessage] = ChatMessage.mocks
     @State private var avatar: Avatar? = .mock
     @State private var currentUser: User? = .mock
     @State private var textFieldText:String = ""
-    @State private var showChatSettings:Bool = false
+    @State private var showChatSettings:AnyAppAlert?
     @State private var scrollPosition:String?
-    @State private var showAlert:Bool = false
-    @State private var alertTitle:String = ""
+    @State private var alert:AnyAppAlert?
     
    
     private func onSendMessage(){
@@ -38,14 +42,32 @@ struct ChatView: View {
             scrollPosition = message.id
             textFieldText = ""
         } catch let error {
-            alertTitle = error.localizedDescription
-            showAlert = true
+            alert = AnyAppAlert(
+                error: error
+            )
         }
     }
     
-    private func onChatSettingsPressed(){
-        showChatSettings = true
+    private func onChatSettingsPressed() {
+        showChatSettings = AnyAppAlert(
+            alertTitle: "",
+            alertSubtitle: "What would you like to do?",
+            buttons: {
+                AnyView(
+                    Group {
+                        Button("Report User / Chat", role: .destructive) {
+                            
+                        }
+                        
+                        Button("Delete Chat", role: .destructive) {
+                            
+                        }
+                    }
+                )
+            }
+        )
     }
+
     
     var body: some View {
         VStack(spacing: 0) {
@@ -64,22 +86,8 @@ struct ChatView: View {
                     }
             }
         }
-        .confirmationDialog("", isPresented: $showChatSettings) {
-            Button("Report User / Chat",role: .destructive) {
-                
-            }
-            
-            Button("Delete Chat",role: .destructive) {
-                
-            }
-            
-        }message: {
-            Text("What would you like to do?")
-        }
-        .alert(alertTitle, isPresented: $showAlert) {
-            Button("OK", role: .cancel) { }
-        }
-        
+        .showCustomAlert(type: .confirmationDialog, alert: $showChatSettings)
+        .showCustomAlert(alert: $alert)
         .toolbarTitleDisplayMode(.inline)
     }
     
