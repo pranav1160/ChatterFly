@@ -54,7 +54,7 @@ struct ExploreView: View {
                 HStack(spacing: 12) {
                     ForEach(categories, id: \.self) { category in
                         CategoryCellView(
-                            title: category.rawValue.capitalized,
+                            title: category.plural.capitalized,
                             imageName: Constants.randomImage,
                             font: .title2,
                             cornerRadius: 20
@@ -78,9 +78,9 @@ struct ExploreView: View {
         Section{
             ForEach(popularAvatars,id: \.self) { avatar in
                 CustomListCellView(
-                    imgName: avatar.profileImageName,
+                    imageName: avatar.profileImageName,
                     title: avatar.name,
-                    subTitle: avatar.characterDescription
+                    subtitle: avatar.characterDescription
                 )
                 .anyButton(style: .highlight) {
                     

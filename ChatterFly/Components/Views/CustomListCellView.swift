@@ -4,58 +4,55 @@
 //
 //  Created by Pranav on 27/10/25.
 //
-
 import SwiftUI
 
 struct CustomListCellView: View {
-    var imgName:String? = Constants.randomImage
-    var title:String? = "Alien"
-    var subTitle:String? = "An alien is eating your brains"
+    
+    var imageName: String? = Constants.randomImage
+    var title: String? = "Alpha"
+    var subtitle: String? = "An alien that is smiling in the park."
+    
     var body: some View {
-        HStack{
-            //image
-            ZStack{
-                if imgName != nil{
-                    ImageLoaderView()
-                } else{
+        HStack(spacing: 8) {
+            ZStack {
+                if let imageName {
+                    ImageLoaderView(url: imageName)
+                } else {
                     Rectangle()
-                        .fill(Color.accent)
+                        .fill(.secondary.opacity(0.5))
                 }
             }
-                .aspectRatio(1,contentMode: .fit)
-                .frame(width: 80)
-                .clipShape(RoundedRectangle(cornerRadius: 18))
-            VStack(alignment: .leading) {
-                //title
-                if let title{
+            .aspectRatio(1, contentMode: .fit)
+            .frame(height: 60)
+            .cornerRadius(16)
+            
+            VStack(alignment: .leading, spacing: 4) {
+                if let title {
                     Text(title)
                         .font(.headline)
-                        .fontWeight(.semibold)
-                        
                 }
-                //subtitle
-                if let subTitle{
-                    Text(subTitle)
+                if let subtitle {
+                    Text(subtitle)
                         .font(.subheadline)
                 }
             }
-            
-            .frame(maxWidth: .infinity,alignment: .leading)
-            
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .frame(maxWidth: .infinity,alignment: .leading)
-        .background(Color(uiColor: .secondarySystemBackground))
-        .padding()
+        .padding(12)
+        .padding(.vertical, 4)
+        .background(Color(uiColor: .systemBackground))
     }
 }
 
 #Preview {
-    
-    VStack{
-        CustomListCellView()
-        CustomListCellView(imgName: nil)
-        CustomListCellView(subTitle: nil)
-        CustomListCellView(title: nil)
+    ZStack {
+        Color.gray.ignoresSafeArea()
+        
+        VStack {
+            CustomListCellView()
+            CustomListCellView(imageName: nil)
+            CustomListCellView(title: nil)
+            CustomListCellView(subtitle: nil)
+        }
     }
-    
 }

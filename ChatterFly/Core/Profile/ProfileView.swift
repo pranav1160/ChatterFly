@@ -79,9 +79,9 @@ struct ProfileView: View {
             } else {
                 ForEach(avatars,id: \.self) { avatar in
                     CustomListCellView(
-                        imgName: avatar.profileImageName,
+                        imageName: avatar.profileImageName,
                         title: avatar.name,
-                        subTitle: nil
+                        subtitle: nil
                     )
                     .anyButton(style: .highlight) {
                         

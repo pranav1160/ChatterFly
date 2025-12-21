@@ -10,6 +10,22 @@ import Foundation
 enum CharacterOption:String,CaseIterable,Hashable{
     case man,woman,alien,dog,cat
     
+    var plural: String {
+        switch self {
+        case .man:
+            return "men"
+        case .woman:
+            return "women"
+        case .alien:
+            return "aliens"
+        case .dog:
+            return "dogs"
+        case .cat:
+            return "cats"
+        }
+    }
+
+    
     static var defaultCharacter:Self{
         .cat
     }
