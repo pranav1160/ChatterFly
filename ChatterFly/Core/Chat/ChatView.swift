@@ -17,6 +17,8 @@ struct ChatView: View {
     @State private var scrollPosition:String?
     @State private var alert:AnyAppAlert?
     @State private var showProfileModal:Bool = false
+    
+    var avatarId:String = Avatar.mock.avatarId
 
     var body: some View {
         ZStack{

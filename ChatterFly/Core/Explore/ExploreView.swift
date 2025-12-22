@@ -7,14 +7,22 @@
 
 import SwiftUI
 
+enum NavigationPathOption: Hashable {
+    case chat(avatarId: String)
+    case category(category: CharacterOption, imageName: String)
+}
+
+
 struct ExploreView: View {
     let avatar = Avatar.mock
     @State private var featuredAvatars:[Avatar] = Avatar.mocks
     @State private var categories:[CharacterOption] = CharacterOption.allCases
     @State private var popularAvatars:[Avatar] = Avatar.mocks
     
+    @State private var path : [NavigationPathOption] = []
+    
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             List {
                 featuredSection
                 
@@ -23,6 +31,20 @@ struct ExploreView: View {
                 popularSection
             }
             .navigationTitle("Explore")
+            .navigationDestination(for: NavigationPathOption.self) { route in
+                switch route {
+                    
+                case .chat(let avatarId):
+                    ChatView(avatarId: avatarId)
+                    
+                case .category(let category, let imageName):
+                    CategoryListView(
+                        category: category,
+                        imageName: imageName
+                    )
+                }
+            }
+
         }
     }
     
@@ -37,7 +59,7 @@ struct ExploreView: View {
                         imageName: item.profileImageName
                     )
                     .anyButton {
-                        print("featured : \(item.name!)")
+                        onAvatarPressed(avatar: avatar)
                     }
                 }
             )
@@ -53,14 +75,23 @@ struct ExploreView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
                     ForEach(categories, id: \.self) { category in
-                        CategoryCellView(
-                            title: category.plural.capitalized,
-                            imageName: Constants.randomImage,
-                            font: .title2,
-                            cornerRadius: 20
-                        )
-                        .anyButton(style: .pressable) {
+                        if let imgName = popularAvatars.first(where: {
+                            $0.characterOption == category
+                        })?.profileImageName {
+                            CategoryCellView(
+                                title: category.plural.capitalized,
+                                imageName: Constants.randomImage,
+                                font: .title2,
+                                cornerRadius: 20
+                            )
+                            .anyButton(style: .pressable) {
+                                onCategoryPressed(
+                                    category: category,
+                                    imgName: imgName
+                                )
+                            }
                         }
+                       
                     }
                 }
             }
@@ -90,6 +121,17 @@ struct ExploreView: View {
         }header: {
             Text("Popular")
         }
+    }
+    
+    private func onAvatarPressed(avatar:Avatar){
+        path.append(.chat(avatarId: avatar.avatarId))
+    }
+    
+    private func onCategoryPressed(category:CharacterOption,imgName:String){
+        path
+            .append(
+                .category(category: category, imageName: imgName)
+            )
     }
 }
 
