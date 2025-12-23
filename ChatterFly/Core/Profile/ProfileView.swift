@@ -15,14 +15,17 @@ struct ProfileView: View {
     @State private var avatars:[Avatar] = []
     @State private var isLoading:Bool = true
     
+    @State private var path : [NavigationPathOption] = []
+    
     var body: some View {
         
-        NavigationStack {
+        NavigationStack(path: $path) {
             List{
                 profileSection
                 avatarSection
             }
             .navigationTitle("Profile")
+            .navigationDestinationForCoreModule(path: $path)
             .task {
                 await loadData()
             }
@@ -84,7 +87,7 @@ struct ProfileView: View {
                         subtitle: nil
                     )
                     .anyButton(style: .highlight) {
-                        
+                        onAvatarPressed(avatar: avatar)
                     }
                 }
                 .onDelete(perform: { indexset in
@@ -122,6 +125,10 @@ struct ProfileView: View {
     
     private func onAvatarCreateButtonPressed(){
         showAvatarCreateView = true
+    }
+    
+    private func onAvatarPressed(avatar:Avatar){
+        path.append(.chat(avatarId: avatar.avatarId))
     }
     
     private func onDeleteAvatar(indexSet:IndexSet){

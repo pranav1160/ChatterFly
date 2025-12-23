@@ -9,67 +9,52 @@ import SwiftUI
 
 struct ChatRowCellViewBuilder: View {
     
-    var currentUserId: String? = ""
+    var currentUserId: String?
     
-    var chat:Chat = .mock
-    @State private var avatar:Avatar?
+    var chat: Chat
+    @State private var avatar: Avatar?
     var getAvatar: () async -> Avatar?
     
-    @State private var lastchatMessage:ChatMessage?
+    @State private var lastchatMessage: ChatMessage?
     var getLastMessage: () async -> ChatMessage?
     
-    @State private var didLoadAvatar: Bool = false
-    @State private var didLoadChatMessage: Bool = false
+    @State private var didLoadAvatar = false
+    @State private var didLoadChatMessage = false
     
     private var isLoading: Bool {
-        if didLoadAvatar && didLoadChatMessage {
-            return false
-        }
-        
-        return true
+        !(didLoadAvatar && didLoadChatMessage)
     }
     
     private var hasNewChat: Bool {
-        guard let lastchatMessage, let currentUserId else { return false}
-        return lastchatMessage.hasSeenBy(userId: currentUserId)
+        guard let lastchatMessage, let currentUserId else { return false }
+        return !lastchatMessage.hasSeenBy(userId: currentUserId)
     }
     
     private var subheadline: String? {
-        if isLoading {
-            return "xxxx xxxx xxxxx xxxx"
-        }
-        
-        if avatar == nil && lastchatMessage == nil {
-            return "Error"
-        }
-        
+        if isLoading { return "xxxx xxxx xxxxx xxxx" }
+        if avatar == nil && lastchatMessage == nil { return "Error" }
         return lastchatMessage?.content
     }
     
-    
-    
     var body: some View {
-        VStack{
-           
-                ChatRowCellView(
-                    title: isLoading ? "xxxx xxxx" : avatar?.name,
-                    subtitle: subheadline,
-                    profileImage: avatar?.profileImageName,
-                    isLastMessage:  isLoading ? false : hasNewChat
-                )
-                        .redacted(reason: isLoading ? .placeholder : [])
-                        .task {
-                            avatar = await getAvatar()
-                            didLoadAvatar = true
-                        }
-                        .task {
-                            lastchatMessage = await getLastMessage()
-                            didLoadChatMessage = true
-                        }
-            
+        ChatRowCellView(
+            title: isLoading ? "xxxx xxxx" : avatar?.name,
+            subtitle: subheadline,
+            profileImage: avatar?.profileImageName,
+            isLastMessage: isLoading ? false : hasNewChat
+        )
+        .redacted(reason: isLoading ? .placeholder : [])
+        .task {
+            avatar = await getAvatar()
+            didLoadAvatar = true
+        }
+        .task {
+            lastchatMessage = await getLastMessage()
+            didLoadChatMessage = true
         }
     }
 }
+
 
 #Preview {
     VStack{
