@@ -28,15 +28,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8161A5902E9BF06900F50D0A /* ChatterFly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatterFly.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8161A59D2E9BF06A00F50D0A /* ChatterFlyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatterFlyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8161A5A72E9BF06A00F50D0A /* ChatterFlyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatterFlyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8161A5902E9BF06900F50D0A /* HopChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HopChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8161A59D2E9BF06A00F50D0A /* HopChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HopChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8161A5A72E9BF06A00F50D0A /* HopChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HopChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		8161A5922E9BF06900F50D0A /* ChatterFly */ = {
+		8161A5922E9BF06900F50D0A /* HopChat */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ChatterFly;
+			path = HopChat;
 			sourceTree = "<group>";
 		};
 		8161A5A02E9BF06A00F50D0A /* ChatterFlyTests */ = {
@@ -80,7 +80,7 @@
 		8161A5872E9BF06900F50D0A = {
 			isa = PBXGroup;
 			children = (
-				8161A5922E9BF06900F50D0A /* ChatterFly */,
+				8161A5922E9BF06900F50D0A /* HopChat */,
 				8161A5A02E9BF06A00F50D0A /* ChatterFlyTests */,
 				8161A5AA2E9BF06A00F50D0A /* ChatterFlyUITests */,
 				8161A5912E9BF06900F50D0A /* Products */,
@@ -90,9 +90,9 @@
 		8161A5912E9BF06900F50D0A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8161A5902E9BF06900F50D0A /* ChatterFly.app */,
-				8161A59D2E9BF06A00F50D0A /* ChatterFlyTests.xctest */,
-				8161A5A72E9BF06A00F50D0A /* ChatterFlyUITests.xctest */,
+				8161A5902E9BF06900F50D0A /* HopChat.app */,
+				8161A59D2E9BF06A00F50D0A /* HopChatTests.xctest */,
+				8161A5A72E9BF06A00F50D0A /* HopChatUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -100,9 +100,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8161A58F2E9BF06900F50D0A /* ChatterFly */ = {
+		8161A58F2E9BF06900F50D0A /* HopChat */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8161A5B12E9BF06A00F50D0A /* Build configuration list for PBXNativeTarget "ChatterFly" */;
+			buildConfigurationList = 8161A5B12E9BF06A00F50D0A /* Build configuration list for PBXNativeTarget "HopChat" */;
 			buildPhases = (
 				8161A58C2E9BF06900F50D0A /* Sources */,
 				8161A58D2E9BF06900F50D0A /* Frameworks */,
@@ -114,19 +114,19 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				8161A5922E9BF06900F50D0A /* ChatterFly */,
+				8161A5922E9BF06900F50D0A /* HopChat */,
 			);
-			name = ChatterFly;
+			name = HopChat;
 			packageProductDependencies = (
 				8191A07D2EAB015F00CF7407 /* SDWebImageSwiftUI */,
 			);
 			productName = ChatterFly;
-			productReference = 8161A5902E9BF06900F50D0A /* ChatterFly.app */;
+			productReference = 8161A5902E9BF06900F50D0A /* HopChat.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8161A59C2E9BF06A00F50D0A /* ChatterFlyTests */ = {
+		8161A59C2E9BF06A00F50D0A /* HopChatTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8161A5B42E9BF06A00F50D0A /* Build configuration list for PBXNativeTarget "ChatterFlyTests" */;
+			buildConfigurationList = 8161A5B42E9BF06A00F50D0A /* Build configuration list for PBXNativeTarget "HopChatTests" */;
 			buildPhases = (
 				8161A5992E9BF06A00F50D0A /* Sources */,
 				8161A59A2E9BF06A00F50D0A /* Frameworks */,
@@ -140,16 +140,16 @@
 			fileSystemSynchronizedGroups = (
 				8161A5A02E9BF06A00F50D0A /* ChatterFlyTests */,
 			);
-			name = ChatterFlyTests;
+			name = HopChatTests;
 			packageProductDependencies = (
 			);
 			productName = ChatterFlyTests;
-			productReference = 8161A59D2E9BF06A00F50D0A /* ChatterFlyTests.xctest */;
+			productReference = 8161A59D2E9BF06A00F50D0A /* HopChatTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		8161A5A62E9BF06A00F50D0A /* ChatterFlyUITests */ = {
+		8161A5A62E9BF06A00F50D0A /* HopChatUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8161A5B72E9BF06A00F50D0A /* Build configuration list for PBXNativeTarget "ChatterFlyUITests" */;
+			buildConfigurationList = 8161A5B72E9BF06A00F50D0A /* Build configuration list for PBXNativeTarget "HopChatUITests" */;
 			buildPhases = (
 				8161A5A32E9BF06A00F50D0A /* Sources */,
 				8161A5A42E9BF06A00F50D0A /* Frameworks */,
@@ -163,11 +163,11 @@
 			fileSystemSynchronizedGroups = (
 				8161A5AA2E9BF06A00F50D0A /* ChatterFlyUITests */,
 			);
-			name = ChatterFlyUITests;
+			name = HopChatUITests;
 			packageProductDependencies = (
 			);
 			productName = ChatterFlyUITests;
-			productReference = 8161A5A72E9BF06A00F50D0A /* ChatterFlyUITests.xctest */;
+			productReference = 8161A5A72E9BF06A00F50D0A /* HopChatUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -193,7 +193,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8161A58B2E9BF06900F50D0A /* Build configuration list for PBXProject "ChatterFly" */;
+			buildConfigurationList = 8161A58B2E9BF06900F50D0A /* Build configuration list for PBXProject "HopChat" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -210,9 +210,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8161A58F2E9BF06900F50D0A /* ChatterFly */,
-				8161A59C2E9BF06A00F50D0A /* ChatterFlyTests */,
-				8161A5A62E9BF06A00F50D0A /* ChatterFlyUITests */,
+				8161A58F2E9BF06900F50D0A /* HopChat */,
+				8161A59C2E9BF06A00F50D0A /* HopChatTests */,
+				8161A5A62E9BF06A00F50D0A /* HopChatUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -290,12 +290,12 @@
 /* Begin PBXTargetDependency section */
 		8161A59F2E9BF06A00F50D0A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8161A58F2E9BF06900F50D0A /* ChatterFly */;
+			target = 8161A58F2E9BF06900F50D0A /* HopChat */;
 			targetProxy = 8161A59E2E9BF06A00F50D0A /* PBXContainerItemProxy */;
 		};
 		8161A5A92E9BF06A00F50D0A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8161A58F2E9BF06900F50D0A /* ChatterFly */;
+			target = 8161A58F2E9BF06900F50D0A /* HopChat */;
 			targetProxy = 8161A5A82E9BF06A00F50D0A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -433,6 +433,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = HopChat;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = ChatterflyLaunch;
@@ -471,6 +472,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = HopChat;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = ChatterflyLaunch;
@@ -516,7 +518,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatterFly.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChatterFly";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HopChat.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HopChat";
 			};
 			name = Debug;
 		};
@@ -538,7 +540,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatterFly.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChatterFly";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HopChat.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HopChat";
 			};
 			name = Release;
 		};
@@ -585,7 +587,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8161A58B2E9BF06900F50D0A /* Build configuration list for PBXProject "ChatterFly" */ = {
+		8161A58B2E9BF06900F50D0A /* Build configuration list for PBXProject "HopChat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8161A5AF2E9BF06A00F50D0A /* Debug */,
@@ -594,7 +596,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8161A5B12E9BF06A00F50D0A /* Build configuration list for PBXNativeTarget "ChatterFly" */ = {
+		8161A5B12E9BF06A00F50D0A /* Build configuration list for PBXNativeTarget "HopChat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8161A5B22E9BF06A00F50D0A /* Debug */,
@@ -603,7 +605,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8161A5B42E9BF06A00F50D0A /* Build configuration list for PBXNativeTarget "ChatterFlyTests" */ = {
+		8161A5B42E9BF06A00F50D0A /* Build configuration list for PBXNativeTarget "HopChatTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8161A5B52E9BF06A00F50D0A /* Debug */,
@@ -612,7 +614,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8161A5B72E9BF06A00F50D0A /* Build configuration list for PBXNativeTarget "ChatterFlyUITests" */ = {
+		8161A5B72E9BF06A00F50D0A /* Build configuration list for PBXNativeTarget "HopChatUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8161A5B82E9BF06A00F50D0A /* Debug */,
